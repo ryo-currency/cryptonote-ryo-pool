@@ -3,6 +3,10 @@
 
 <div id="workerStats">
     <div class="input-group">
+        <div id="identicon_wrapper">
+  	    <div id="identicon">
+	    </div>
+        </div>
         <input class="form-control" id="yourStatsInput" type="text" tplaceholder="enterYourAddress" placeholder="Enter Your Address">
         <span class="input-group-btn"><button class="btn btn-default" type="button" id="lookUp">
             <span><i class="fa fa-search"></i> <span tkey="lookup">Lookup</span></span>
@@ -131,7 +135,20 @@ var addressTimeout;
 
 function fetchAddressStats(longpoll){
     var address = getCurrentAddress();
-    
+
+    var address_base = address;
+    if(address.indexOf('+') !== -1) {
+	address_base = address.substring(0, address.indexOf('+'));
+    }
+    var icon = blockies.create({
+	scale: 4,
+	seed: address_base
+    });
+    var img = document.createElement("img");
+    img.src = icon.toDataURL();
+    document.getElementById("identicon").innerHTML = "";
+    document.getElementById("identicon").appendChild(img);
+
     xhrAddressPoll = $.ajax({
         url: api + '/stats_address',
         data: {
