@@ -121,6 +121,7 @@
 
     "blockUnlocker": {
         "enabled": true,
+        "useFirstVout": true,
         "interval": 30,
         "depth": 60,
         "poolFee": 0.8,
