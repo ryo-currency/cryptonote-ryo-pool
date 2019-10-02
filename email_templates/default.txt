@@ -2,5 +2,4 @@ Hello,
 
 %MESSAGE%
 
-Thank you,
-Cheers, the allmighty BlockMaster at %POOL_HOST%
+https://pool.ryo-currency.com

@@ -7,32 +7,35 @@
 /**
  * Layout
  **/
- 
-// Collapse menu on load for mobile devices
-$('#menu-content').collapse('hide');
+
+$(document).ready(function() {
+    if($('.drawer').length) {
+        $('.drawer').drawer();
+    }
+});
 
 /**
  * Cookies handler
  **/
 
-let docCookies = {
+var docCookies = {
     getItem: function (sKey) {
         return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || null;
     },
     setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
         if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) { return false; }
-        let sExpires = "";
+        var sExpires = "";
         if (vEnd) {
             switch (vEnd.constructor) {
-                case Number:
-                    sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
-                    break;
-                case String:
-                    sExpires = "; expires=" + vEnd;
-                    break;
-                case Date:
-                    sExpires = "; expires=" + vEnd.toUTCString();
-                    break;
+            case Number:
+                sExpires = vEnd === Infinity ? "; expires=Fri, 31 Dec 9999 23:59:59 GMT" : "; max-age=" + vEnd;
+                break;
+            case String:
+                sExpires = "; expires=" + vEnd;
+                break;
+            case Date:
+                sExpires = "; expires=" + vEnd.toUTCString();
+                break;
             }
         }
         document.cookie = encodeURIComponent(sKey) + "=" + encodeURIComponent(sValue) + sExpires + (sDomain ? "; domain=" + sDomain : "") + (sPath ? "; path=" + sPath : "") + (bSecure ? "; secure" : "");
@@ -53,7 +56,7 @@ let docCookies = {
  **/
 
 // Current page
-let currentPage;
+var currentPage;
 
 // Handle hash change
 window.onhashchange = function(){
@@ -61,29 +64,32 @@ window.onhashchange = function(){
 };
 
 // Route to page
-let xhrPageLoading;
+var xhrPageLoading;
 function routePage(loadedCallback) {
     if (currentPage) currentPage.destroy();
     $('#page').html('');
     $('#loading').show();
+
+    if($('.drawer').length) {
+        $('.drawer').drawer('close');
+    }
 
     if (xhrPageLoading) {
         xhrPageLoading.abort();
     }
 
     $('.hot_link').parent().removeClass('active');
-    let  $link = $('a.hot_link[href="' + (window.location.hash || '#') + '"]');
-    
+    var $link = $('a.hot_link[href="' + (window.location.hash || '#') + '"]');
+
     $link.parent().addClass('active');
-    let page = $link.data('page');
-    
+    var page = $link.data('page');
+
     loadTranslations();
 
     xhrPageLoading = $.ajax({
         url: 'pages/' + page,
         cache: false,
         success: function (data) {
-            $('#menu-content').collapse('hide');
             $('#loading').hide();
             $('#page').show().html(data);
 	    loadTranslations();
@@ -96,10 +102,10 @@ function routePage(loadedCallback) {
 /**
  * Strings
  **/
- 
+
 // Add .update() custom jQuery function to update text content
 $.fn.update = function(txt){
-    let el = this[0];
+    var el = this[0];
     if (el.textContent !== txt)
         el.textContent = txt;
     return this;
@@ -107,10 +113,10 @@ $.fn.update = function(txt){
 
 // Update Text classes
 function updateTextClasses(className, text){
-    let els = document.getElementsByClassName(className);
+    var els = document.getElementsByClassName(className);
     if (els) {
-        for (let i = 0; i < els.length; i++){
-            let el = els[i];
+        for (var i = 0; i < els.length; i++){
+            var el = els[i];
             if (el && el.textContent !== text)
                 el.textContent = text;
         }
@@ -119,7 +125,7 @@ function updateTextClasses(className, text){
 
 // Update Text content
 function updateText(elementId, text){
-    let el = document.getElementById(elementId);
+    var el = document.getElementById(elementId);
     if (el && el.textContent !== text){
         el.textContent = text;
     }
@@ -136,8 +142,8 @@ function formatNumber(number, delimiter){
     if(number != '') {
         number = number.split(delimiter).join('');
 
-        let formatted = '';
-        let sign = '';
+        var formatted = '';
+        var sign = '';
 
         if(number < 0){
             number = -number;
@@ -145,7 +151,7 @@ function formatNumber(number, delimiter){
         }
 
         while(number >= 1000){
-            let mod = number % 1000;
+            var mod = number % 1000;
 
             if(formatted != '') formatted = delimiter + formatted;
             if(mod == 0) formatted = '000' + formatted;
@@ -177,21 +183,21 @@ function formatPercent(percent) {
 
 // Get readable time
 function getReadableTime(seconds){
-    let units = [ [60, 'second'], [60, 'minute'], [24, 'hour'],
-                [7, 'day'], [4, 'week'], [12, 'month'], [1, 'year'] ];
+    var units = [ [60, 'second'], [60, 'minute'], [24, 'hour'],
+                  [7, 'day'], [4, 'week'], [12, 'month'], [1, 'year'] ];
 
     function formatAmounts(amount, unit){
-        let rounded = Math.round(amount);
+        var rounded = Math.round(amount);
 	unit = unit + (rounded > 1 ? 's' : '');
         if (getTranslation(unit)) unit = getTranslation(unit);
         return '' + rounded + ' ' + unit;
     }
 
-    let amount = seconds;
-    for (let i = 0; i < units.length; i++){
+    var amount = seconds;
+    for (var i = 0; i < units.length; i++){
         if (amount < units[i][0]) {
             return formatAmounts(amount, units[i][1]);
-    }
+        }
         amount = amount / units[i][0];
     }
     return formatAmounts(amount,  units[units.length - 1][1]);
@@ -201,8 +207,8 @@ function getReadableTime(seconds){
 function getReadableHashRateString(hashrate){
     if (!hashrate) hashrate = 0;
 
-    let i = 0;
-    let byteUnits = [' H', ' kH', ' MH', ' GH', ' TH', ' PH' ];
+    var i = 0;
+    var byteUnits = [' H', ' kH', ' MH', ' GH', ' TH', ' PH' ];
     if (hashrate > 0) {
         while (hashrate > 1000){
             hashrate = hashrate / 1000;
@@ -211,7 +217,7 @@ function getReadableHashRateString(hashrate){
     }
     return parseFloat(hashrate).toFixed(2) + byteUnits[i];
 }
-    
+
 // Get coin decimal places
 function getCoinDecimalPlaces() {
     if (typeof coinDecimalPlaces != "undefined") return coinDecimalPlaces;
@@ -221,8 +227,8 @@ function getCoinDecimalPlaces() {
 
 // Get readable coins
 function getReadableCoins(coins, digits, withoutSymbol){
-    let coinDecimalPlaces = getCoinDecimalPlaces();
-    let amount = parseFloat((parseInt(coins || 0) / lastStats.config.coinUnits).toFixed(digits || coinDecimalPlaces));
+    var coinDecimalPlaces = getCoinDecimalPlaces();
+    var amount = parseFloat((parseInt(coins || 0) / lastStats.config.coinUnits).toFixed(digits || coinDecimalPlaces));
     return amount.toString() + (withoutSymbol ? '' : (' ' + lastStats.config.symbol));
 }
 
@@ -237,20 +243,20 @@ function formatDifficulty(x) {
 }
 
 // Format luck / current effort
-function formatLuck(difficulty, shares) {
-    let percent = Math.round(shares / difficulty * 100);
+function formatLuck(difficulty, shares, decimals=0) {
+    var percent = (shares / difficulty * 100).toFixed(decimals);
     if(!percent){
         return '<span class="luckGood">?</span>';
     }
     else if(percent <= 100){
         return '<span class="luckGood">' + percent + '%</span>';
     }
-    else if(percent >= 101 && percent <= 150){
+    else if(percent > 100 && percent <= 150){
         return '<span class="luckMid">' + percent + '%</span>';
     }
     else{
         return '<span class="luckBad">' + percent + '%</span>';
-    }    
+    }
 }
 
 /**
@@ -271,22 +277,22 @@ function getTransactionUrl(id) {
 
 // Return blockchain explorer URL
 function getBlockchainUrl(id) {
-    return blockchainExplorer.replace(new RegExp('{symbol}', 'g'), lastStats.config.symbol.toLowerCase()).replace(new RegExp('{id}', 'g'), id);    
+    return blockchainExplorer.replace(new RegExp('{symbol}', 'g'), lastStats.config.symbol.toLowerCase()).replace(new RegExp('{id}', 'g'), id);
 }
- 
+
 /**
  * Tables
  **/
- 
+
 // Sort table cells
 function sortTable() {
-    let table = $(this).parents('table').eq(0),
+    var table = $(this).parents('table').eq(0),
         rows = table.find('tr:gt(0)').toArray().sort(compareTableRows($(this).index()));
     this.asc = !this.asc;
     if(!this.asc) {
         rows = rows.reverse()
     }
-    for(let i = 0; i < rows.length; i++) {
+    for(var i = 0; i < rows.length; i++) {
         table.append(rows[i])
     }
 }
@@ -294,7 +300,7 @@ function sortTable() {
 // Compare table rows
 function compareTableRows(index) {
     return function(a, b) {
-        let valA = getCellValue(a, index), valB = getCellValue(b, index);
+        var valA = getCellValue(a, index), valB = getCellValue(b, index);
         if (!valA) { valA = 0; }
         if (!valB) { valB = 0; }
         return $.isNumeric(valA) && $.isNumeric(valB) ? valA - valB : valA.toString().localeCompare(valB.toString())
@@ -313,42 +319,44 @@ if (typeof langs == "undefined") {
     langs = { en: 'English' };
 }
 
-if (typeof defaultLang == "undefined") {
+if(location.hostname == 'pool.ryo-currency.ru') {
+    defaultLang = 'ru';
+} else {
     defaultLang = 'en';
 }
 
-let langCode = defaultLang;
-let langData = null; 
+var langCode = defaultLang;
+var langData = null;
 
 function getTranslation(key) {
     if (!langData || !langData[key]) return null;
-    return langData[key];    
+    return langData[key];
 }
 
-let translate = function(data) {
+var translate = function(data) {
     $("html")[0].lang = langCode;
     langData = data;
 
     $("[data-tkey]").each(function(index) {
-        let strTr = data[$(this).attr('data-tkey')];
+        var strTr = data[$(this).attr('data-tkey')];
         $(this).html(strTr);
     });
 
     $("[data-tplaceholder]").each(function(index) {
-        let strTr = data[$(this).attr('data-tplaceholder')];
+        var strTr = data[$(this).attr('data-tplaceholder')];
 	$(this).attr('placeholder', strTr)
     });
 
     $("[data-tvalue]").each(function(index) {
-        let strTr = data[$(this).attr('data-tvalue')];
+        var strTr = data[$(this).attr('data-tvalue')];
         $(this).attr('value', strTr)
     });
-} 
+}
 
 // Get language code from URL
 const $_GET = {};
 const args = location.search.substr(1).split(/&/);
-for (let i=0; i<args.length; ++i) {
+for (var i=0; i<args.length; ++i) {
     const tmp = args[i].split(/=/);
     if (tmp[0] != "") {
         $_GET[decodeURIComponent(tmp[0])] = decodeURIComponent(tmp.slice(1).join("").replace("+", " "));
@@ -363,60 +371,60 @@ function loadTranslations() {
     }
     else if (langs && langs[langCode]) {
         $.getJSON('lang/'+langCode+'.json', translate);
-        $.getScript('lang/timeago/jquery.timeago.'+langCode+'.js');    
+        $.getScript('lang/timeago/jquery.timeago.'+langCode+'.js');
     } else {
         $.getJSON('lang/'+defaultLang+'.json', translate);
-        $.getScript('lang/timeago/jquery.timeago.'+defaultLang+'.js');    
+        $.getScript('lang/timeago/jquery.timeago.'+defaultLang+'.js');
     }
 }
 
 // Language selector
 function renderLangSelector() {
     // Desktop
-    let html = '';
-    let numLangs = 0;
+    var html = '';
+    var numLangs = 0;
     if (langs) {
         html += '<select id="newLang" class="form-control form-control-sm">';
-        for (let lang in langs) {
-            let selected = lang == langCode ? ' selected="selected"' : '';
+        for (var lang in langs) {
+            var selected = lang == langCode ? ' selected="selected"' : '';
             html += '<option value="' + lang + '"' + selected + '>' + langs[lang] + '</option>';
 	    numLangs ++;
         }
 	html += '</select>';
     }
     if (html && numLangs > 1) {
-        $('#langSelector').html(html);	
+        $('#langSelector').html(html);
         $('#newLang').each(function(){
             $(this).change(function() {
-                let newLang = $(this).val();
-                let url = '?lang=' + newLang;
+                var newLang = $(this).val();
+                var url = '?lang=' + newLang;
                 if (window.location.hash) url += window.location.hash;
                 window.location.href = url;
             });
         });
-    }	
+    }
 
     // Mobile
     html = '';
     numLangs = 0;
     if (langs) {
         html += '<select id="mNewLang" class="form-control form-control-sm">';
-        for (let lang in langs) {
-            let selected = lang == langCode ? ' selected="selected"' : '';
+        for (var lang in langs) {
+            var selected = lang == langCode ? ' selected="selected"' : '';
             html += '<option value="' + lang + '"' + selected + '>' + langs[lang] + '</option>';
 	    numLangs ++;
         }
 	html += '</select>';
     }
     if (html && numLangs > 1) {
-        $('#mLangSelector').html(html);	
+        $('#mLangSelector').html(html);
         $('#mNewLang').each(function(){
             $(this).change(function() {
-                let newLang = $(this).val();
-                let url = '?lang=' + newLang;
+                var newLang = $(this).val();
+                var url = '?lang=' + newLang;
                 if (window.location.hash) url += window.location.hash;
                 window.location.href = url;
             });
         });
-    }	
+    }
 }

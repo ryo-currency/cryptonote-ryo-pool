@@ -112,7 +112,7 @@
 <!-- Javascript -->
 <script>
 function formatLuck(difficulty, shares) {
-    let  percent = Math.round(shares / difficulty * 100);
+    var percent = Math.round(shares / difficulty * 100);
     if(!percent){
         return '<span class="luckGood">?</span>';
     }
@@ -128,7 +128,7 @@ function formatLuck(difficulty, shares) {
 }
 
 function getStats(promptPassword) {
-    let  password = docCookies.getItem('password');
+    var password = docCookies.getItem('password');
 
     if(!password || promptPassword) {
         password = prompt('Enter admin password');
