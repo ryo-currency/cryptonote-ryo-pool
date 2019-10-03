@@ -349,7 +349,7 @@
          if (lastPortsJson !== portsJson) {
              lastPortsJson = portsJson;
              var $miningPortChildren = [];
-	     var $miningPortOptions = [];
+	           var $miningPortOptions = [];
              for (var i = 0; i < lastStats.config.ports.length; i++) {
                  var portData = lastStats.config.ports[i];
                  var $portChild = $(miningPortTemplate);
@@ -357,7 +357,7 @@
                  $portChild.find('.miningPortDiff').text(formatDifficulty(portData.difficulty));
                  $portChild.find('.miningPortDesc').text(portData.desc);
                  $miningPortChildren.push($portChild);
-		 $miningPortOptions.push('<option value="'+portData.port+'">'+portData.port+' &ndash; '+portData.desc+'</option>');
+		             $miningPortOptions.push('<option value="'+portData.port+'">'+portData.port+' &ndash; '+portData.desc+'</option>');
              }
              $miningPorts.empty().append($miningPortChildren);
              $miningPortSelect.empty().append($miningPortOptions);
@@ -417,5 +417,4 @@
      var password = workerName ? workerName : 'x';
      updateTextClasses('examplePassword', password);
  });
-
 </script>
