@@ -217,7 +217,7 @@
              initialWidth: "0px",
              initialHeight: "0px",
              onOpen: function() {
-	         //if (!lastStats.config.sendEmails) $('#emailNotifications').hide();
+	         if (!lastStats.config.sendEmails) $('#emailNotifications').hide();
                  // Set current address and load initial values
                  var address = getCurrentAddress();
                  if (address){
