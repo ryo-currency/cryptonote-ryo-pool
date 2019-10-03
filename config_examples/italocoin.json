@@ -8,9 +8,11 @@
     "coinDifficultyTarget": 120,
 
     "daemonType": "default",
-    "cnAlgorithm": "cryptonight_heavy",
-    "cnVariant": null,
+    "cnAlgorithm": "cryptonight",
+    "cnVariant": 13,
     "cnBlobType": 0,
+    "includeHeight": true,
+    "includeAlgo": "cn/r",
 
     "logging": {
         "files": {
@@ -298,6 +300,12 @@
                 "enabled": true,
                 "updateInterval": 180,
                 "stepInterval": 1800,
+                "maximumPeriod": 86400
+            },
+            "worker_hashrate": {
+                "enabled": true,
+                "updateInterval": 60,
+                "stepInterval": 60,
                 "maximumPeriod": 86400
             },
             "payments": {

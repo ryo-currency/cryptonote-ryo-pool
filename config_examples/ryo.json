@@ -28,7 +28,7 @@
         "enabled": true,
         "clusterForks": "auto",
         "poolAddress": "** Your pool wallet address **",
-	"addressValidatorBin": "bin/ryo-address-validator",
+	      "addressValidatorBin": "bin/ryo-address-validator",
         "blockRefreshInterval": 1000,
         "minerTimeout": 900,
         "sslCert": "./cert.pem",
@@ -121,6 +121,7 @@
 
     "blockUnlocker": {
         "enabled": true,
+        "useFirstVout": true,
         "interval": 30,
         "depth": 60,
         "poolFee": 0.8,

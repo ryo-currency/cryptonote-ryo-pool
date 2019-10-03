@@ -2,10 +2,10 @@
     "poolHost": "your.pool.host",
 
     "coin": "dero",
-    "symbol": "DERO,
+    "symbol": "DERO",
     "coinUnits": 1000000000000,
     "coinDecimalPlaces": 4,
-    "coinDifficultyTarget": 120,
+    "coinDifficultyTarget": 12,
 
     "daemonType": "default",
     "cnAlgorithm": "cryptonight",
@@ -298,6 +298,12 @@
                 "enabled": true,
                 "updateInterval": 180,
                 "stepInterval": 1800,
+                "maximumPeriod": 86400
+            },
+            "worker_hashrate": {
+                "enabled": true,
+                "updateInterval": 60,
+                "stepInterval": 60,
                 "maximumPeriod": 86400
             },
             "payments": {

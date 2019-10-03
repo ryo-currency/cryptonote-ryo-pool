@@ -1,14 +1,15 @@
 {
     "poolHost": "your.pool.host",
 
-    "coin": "qwertycoin",
+    "coin": "Qwertycoin",
     "symbol": "QWC",
     "coinUnits": 100000000,
-    "coinDecimalPlaces": 4,
+    "coinDecimalPlaces": 8,
     "coinDifficultyTarget": 120,
 
-    "cnAlgorithm": "cryptonight_heavy",
-    "cnVariant": null,
+    "daemonType": "default",
+    "cnAlgorithm": "cryptonight",
+    "cnVariant": 0,
     "cnBlobType": 0,
 
     "logging": {
@@ -105,14 +106,14 @@
 
     "payments": {
         "enabled": true,
-        "interval": 1800,
+        "interval": 600,
         "maxAddresses": 50,
-        "mixin": 12,
+        "mixin": 5,
         "priority": 0,
-        "transferFee": 1000,
+        "transferFee": 200000000,
         "dynamicTransferFee": true,
         "minerPayFee" : true,
-        "minPayment": 1000000000000,
+        "minPayment": 1000000000,
         "maxTransactionAmount": 0,
         "denomination": 100000000
     },
@@ -295,6 +296,12 @@
                 "enabled": true,
                 "updateInterval": 180,
                 "stepInterval": 1800,
+                "maximumPeriod": 86400
+            },
+            "worker_hashrate": {
+                "enabled": true,
+                "updateInterval": 60,
+                "stepInterval": 60,
                 "maximumPeriod": 86400
             },
             "payments": {

@@ -9,8 +9,10 @@
 
     "daemonType": "default",
     "cnAlgorithm": "cryptonight",
-    "cnVariant": 1,
+    "cnVariant": 13,
     "cnBlobType": 0,
+    "includeHeight": true,
+    "includeAlgo": "cn/r",
 
     "logging": {
         "files": {
@@ -71,8 +73,8 @@
         "varDiff": {
             "minDiff": 100,
             "maxDiff": 100000000,
-            "targetTime": 60,
-            "retargetTime": 30,
+            "targetTime": 120,
+            "retargetTime": 60,
             "variancePercent": 30,
             "maxJump": 100
         },
@@ -108,7 +110,7 @@
         "enabled": true,
         "interval": 1800,
         "maxAddresses": 50,
-        "mixin": 5,
+        "mixin": 7,
         "priority": 0,
         "transferFee": 14000000000,
         "dynamicTransferFee": true,
@@ -298,6 +300,12 @@
                 "enabled": true,
                 "updateInterval": 180,
                 "stepInterval": 1800,
+                "maximumPeriod": 86400
+            },
+            "worker_hashrate": {
+                "enabled": true,
+                "updateInterval": 60,
+                "stepInterval": 60,
                 "maximumPeriod": 86400
             },
             "payments": {

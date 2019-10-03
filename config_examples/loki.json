@@ -8,9 +8,10 @@
     "coinDifficultyTarget": 120,
 
     "daemonType": "default",
-    "cnAlgorithm": "cryptonight_heavy",
-    "cnVariant": null,
-    "cnBlobType": 0,
+    "cnAlgorithm": "randomx",
+    "isRandomX": true,
+    "cnVariant": 18,
+    "cnBlobType": 5,
 
     "logging": {
         "files": {
@@ -107,7 +108,7 @@
     "payments": {
         "enabled": true,
         "interval": 1800,
-        "maxAddresses": 50,
+        "maxAddresses": 15,
         "mixin": 10,
         "priority": 0,
         "transferFee": 50000000,
@@ -125,7 +126,7 @@
         "depth": 60,
         "poolFee": 0.8,
         "devDonation": 0.2,
-        "networkFee": 5.0
+        "useFirstVout": true
     },
 
     "api": {
@@ -298,6 +299,12 @@
                 "enabled": true,
                 "updateInterval": 180,
                 "stepInterval": 1800,
+                "maximumPeriod": 86400
+            },
+            "worker_hashrate": {
+                "enabled": true,
+                "updateInterval": 60,
+                "stepInterval": 60,
                 "maximumPeriod": 86400
             },
             "payments": {

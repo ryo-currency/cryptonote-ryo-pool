@@ -8,9 +8,9 @@
     "coinDifficultyTarget": 120,
 
     "daemonType": "forknote",
-    "cnAlgorithm": "cryptonight",
-    "cnVariant": 0,
-    "cnBlobType": 0,
+    "cnAlgorithm": "cryptonight_light",
+    "cnVariant": 1,
+    "cnBlobType": 2,
 
     "logging": {
         "files": {
@@ -298,6 +298,12 @@
                 "enabled": true,
                 "updateInterval": 180,
                 "stepInterval": 1800,
+                "maximumPeriod": 86400
+            },
+            "worker_hashrate": {
+                "enabled": true,
+                "updateInterval": 60,
+                "stepInterval": 60,
                 "maximumPeriod": 86400
             },
             "payments": {

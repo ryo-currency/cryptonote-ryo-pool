@@ -102,11 +102,11 @@ Community / Support
 
 * https://imaginary.stream/
 * https://graft.anypool.net/
-* https://graft.dark-mine.su/
+* https://www.dark-mine.su/
 * http://itns.proxpool.com/
-* https://bytecoin.pt
-* http://ita.minexmr24.ru/
-* https://pool.croatpirineus.cat
+* https://bytecoin.pt/
+* https://pool.leviar.io/
+* https://pool.croatpirineus.cat/
 
 Usage
 ===
@@ -114,12 +114,15 @@ Usage
 #### Requirements
 * Coin daemon(s) (find the coin's repo and build latest version from source)
   * [List of Cryptonote coins](https://github.com/dvandal/cryptonote-nodejs-pool/wiki/Cryptonote-Coins)
-* [Node.js](http://nodejs.org/) v4.0+
+* [Node.js](http://nodejs.org/) v11.0+
   * For Ubuntu: 
  ```
-  curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash
+  curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
   sudo apt-get install -y nodejs
-```
+ ```
+  * Or use NVM(https://github.com/creationix/nvm) for debian/ubuntu.
+
+
 * [Redis](http://redis.io/) key-value store v2.6+ 
   * For Ubuntu: 
 ```
@@ -127,6 +130,16 @@ sudo add-apt-repository ppa:chris-lea/redis-server
 sudo apt-get update
 sudo apt-get install redis-server
  ```
+ Dont forget to tune redis-server:
+ ```
+echo never > /sys/kernel/mm/transparent_hugepage/enabled
+echo 1024 > /proc/sys/net/core/somaxconn
+ ```
+ Add this lines to your /etc/rc.local and make it executable
+ ```
+ chmod +x /etc/rc.local
+ ```
+ 
 * libssl required for the node-multi-hashing module
   * For Ubuntu: `sudo apt-get install libssl-dev`
 
@@ -155,7 +168,7 @@ sudo su - your-user
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/dvandal/cryptonote-nodejs-pool.git pool
+git clone https://github.com/muscleman/cryptonote-nodejs-pool.git pool
 cd pool
 
 npm update
@@ -186,7 +199,7 @@ Explanation for each field:
 "coinDifficultyTarget": 120,
 
 /* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API) */
-"deamonType": "default",
+"daemonType": "default",
 
 /* Set Cryptonight algorithm settings.
    Supported algorithms: cryptonight (default). cryptonight_light and cryptonight_heavy
@@ -196,7 +209,8 @@ Explanation for each field:
 "cnAlgorithm": "cryptonight",
 "cnVariant": 1,
 "cnBlobType": 0,
-
+"includeHeight":false, /*true to include block.height in job to miner*/
+"includeAlgo":"cn/wow", /*wownero specific change to include algo in job to miner*/
 /* Logging */
 "logging": {
 
@@ -220,7 +234,8 @@ Explanation for each field:
         "colors": true
     }
 },
-
+/*Which Hashing Package to use: cryptonight-hashing=false, multi-hashing=true*/
+"hashingUtil":false,
 /* Modular Pool Server */
 "poolServer": {
     "enabled": true,
@@ -302,7 +317,8 @@ Explanation for each field:
 
     /* Set payment ID on miner client side by passing <address>.<paymentID> */
     "paymentId": {
-        "addressSeparator": "." // Character separator between <address> and <paymentID>
+        "addressSeparator": ".", // Character separator between <address> and <paymentID>
+        "validation": true // Refuse login if non alphanumeric characters in <paymentID>
     },
 
     /* Feature to trust share difficulties from miners which can
@@ -393,7 +409,9 @@ Explanation for each field:
 /* Wallet daemon connection details (default port is 18980) */
 "wallet": {
     "host": "127.0.0.1",
-    "port": 18982
+    "port": 18982,
+    "username": "--rpc-username", //monero based wallet authentication
+    "password": "--rpc-password"
 },
 
 /* Redis connection info (default port is 6379) */
@@ -505,7 +523,7 @@ Explanation for each field:
 
 /* Prices settings for market and price charts */
 "prices": {
-    "source": "cryptonator", // Exchange (supported values: cryptonator, altex, crex24, cryptopia, stocks.exchange, tradeogre)
+    "source": "cryptonator", // Exchange (supported values: cryptonator, altex, crex24, cryptopia, stocks.exchange, tradeogre, maplechange)
     "currency": "USD" // Default currency
 },
 	    
@@ -557,6 +575,12 @@ Explanation for each field:
             "stepInterval": 1800,
             "maximumPeriod": 86400
         },
+        "worker_hashrate": {
+            "enabled": true,
+            "updateInterval": 60,
+            "stepInterval": 60,
+            "maximumPeriod": 86400
+        },
         "payments": { // Payment chart uses all user payments data stored in DB
             "enabled": true
         }
@@ -585,6 +609,8 @@ This software contains four distinct modules:
 * `api` - Used by the website to display network, pool and miners' data
 * `unlocker` - Processes block candidates and increases miners' balances when blocks are unlocked
 * `payments` - Sends out payments to miners according to their balances stored in redis
+* `chartsDataCollector` - Processes miners and workers hashrate stats and charts
+* `telegramBot`	- Processes telegram bot commands
 
 
 By default, running the `init.js` script will start up all four modules. You can optionally have the script start
@@ -597,7 +623,7 @@ node init.js -module=api
 [Example screenshot](http://i.imgur.com/SEgrI3b.png) of running the pool in single module mode with tmux.
 
 To keep your pool up, on operating system with systemd, you can create add your pool software as a service.  
-Use this [example](https://github.com/dvandal/cryptonote-nodejs-pool/blob/master/deployment/cryptonote-nodejs-pool.service) to create the systemd service `/lib/systemd/system/cryptonote-nodejs-pool.service`
+Use this [example](https://github.com/muscleman/cryptonote-nodejs-pool/blob/master/deployment/cryptonote-nodejs-pool.service) to create the systemd service `/lib/systemd/system/cryptonote-nodejs-pool.service`
 Then enable and start the service with the following commands : 
 
 ```
@@ -632,6 +658,9 @@ var telegram = "https://t.me/YourPool";
 
 /* Pool Discord URL */
 var discord = "https://discordapp.com/invite/YourPool";
+
+/*Pool Facebook URL */
+var facebook = "https://www.facebook.com/<YourPoolFacebook";
 
 /* Market stat display params from https://www.cryptonator.com/widget */
 var marketCurrencies = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR", "{symbol}-CAD"];
@@ -745,7 +774,7 @@ curl 127.0.0.1:18081/json_rpc -d '{"method":"getblockheaderbyheight","params":{"
 Donations
 ---------
 
-Thanks for supporting my works on this project! If you want to make a donation to [Daniel Vandal](https://github.com/dvandal/), the developper of this project, you can send any amount of your choice to one of theses addresses:
+Thanks for supporting my works on this project! If you want to make a donation to [Dvandal](https://github.com/dvandal/), the developper of this project, you can send any amount of your choice to one of theses addresses:
 
 * Bitcoin (BTC): `17XRyHm2gWAj2yfbyQgqxm25JGhvjYmQjm`
 * Bitcoin Cash (BCH): `qpl0gr8u3yu7z4nzep955fqy3w8m6w769sec08u3dp`
@@ -763,6 +792,8 @@ Credits
 ---------
 
 * [fancoder](//github.com/fancoder) - Developper on cryptonote-universal-pool project from which current project is forked.
+* dvandal (//github.com/dvandal) - Developer of cryptonote-nodejs-pool software
+* Musclesonvacation (//github.com/muscleman) - Current developer for pool software
 
 License
 -------
