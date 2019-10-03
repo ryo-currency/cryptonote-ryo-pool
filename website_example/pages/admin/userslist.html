@@ -38,13 +38,13 @@
 <!-- Javascript -->
 <script>
 function parseUsers(wallets) {
-    let  totalUsers = 0;
-    let  walletsArray = [];
-    let  properObject = {};
+    var totalUsers = 0;
+    var walletsArray = [];
+    var properObject = {};
 
-    for(let  wallet in wallets) {
+    for(var wallet in wallets) {
         if(wallets.hasOwnProperty(wallet)) {
-            let  userData = wallets[wallet];
+            var userData = wallets[wallet];
             walletsArray.push({
                 miner: wallet,
                 wallet: userData,
@@ -67,12 +67,12 @@ function parseUsers(wallets) {
 }
 
 function createUserTable(promptPassword) {
-    let  password = docCookies.getItem('password');
+    var password = docCookies.getItem('password');
 
     if(!password || promptPassword) {
         password = prompt('Enter admin password');
     }
-    
+
     $.ajax({
         url: api + '/admin_users',
         data: {password: password},

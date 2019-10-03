@@ -1,4 +1,61 @@
-<br/>
+<div>
+
+    <div class="top-notification info">
+        <strong>Attention:</strong> Pool software has been upgraded. Thanks for mining at the Official Ryo Pool.
+    </div>
+
+    <div class="main-panel">
+        <div class="main-panel-heading">
+            <h2 data-tkey="welcomeHeader">Welcome to the Official Ryo Mining Pool</h2>
+        </div>
+        <div class="main-panel-body">
+
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>
+                        <span data-tkey="welcomeText1">Strengthen the network by decentralizing your hashrate!</span>
+                    </p>
+
+                    <p>
+                        <span data-tkey="serverLocation">Server location</span>: United Kingdom
+                    </p>
+
+                </div>
+                <div class="col-lg-6">
+
+                    <p style="margin-bottom:0">
+                        <span data-tkey="poolFeatures">Pool features</span>:
+                    </p>
+                    <ul style="padding-left:20px">
+                        <li>
+                            <span data-tkey="poolFeature1">Integrated address &amp; payment ID support</span>
+                        </li>
+                        <li>
+                            <span data-tkey="poolFeature2">Configurable payment threshold</span>
+                        </li>
+                        <li>
+                            <span data-tkey="paymentsMinimum">Minimum Payout</span>
+                            <span class="paymentsMinimum"></span>
+                        </li>
+                        <li>
+                            <span data-tkey="paymentsDenomination">Denomination Unit</span>
+                            <span class="paymentsDenomination"></span>
+                        </li>
+                        <li>
+                            <span data-tkey="propPayment">PROP payment scheme</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+</div>
+
 
 <!-- Statistics -->
 <div id="poolStats" class="row">
@@ -7,7 +64,7 @@
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
             <div class="icon">
-                <span class="fa fa-dashboard"></span>
+                <span class="fa fa-tachometer-alt"></span>
             </div>
             <div class="content">
                 <div class="text"><span data-tkey="poolHashrate">Pool Hash Rate</span></div>
@@ -15,7 +72,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Blocks Found -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
@@ -28,7 +85,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Blocks Found Every -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
@@ -41,12 +98,12 @@
             </div>
         </div>
     </div>
-        
+
     <!-- Current Effort -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
             <div class="icon">
-                <span class="fa fa-line-chart"></span>
+                <span class="fa fa-percentage"></span>
             </div>
             <div class="content">
                 <div class="text"><span data-tkey="currentEffort">Current Effort</span></div>
@@ -54,12 +111,12 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Network Hash Rate -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
             <div class="icon">
-                <span class="fa fa-dashboard"></span>
+                <span class="fa fa-tachometer-alt"></span>
             </div>
             <div class="content">
                 <div class="text"><span data-tkey="networkHashrate">Network Hash Rate</span></div>
@@ -67,7 +124,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Difficulty -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
@@ -80,7 +137,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Blockchain Height -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
@@ -98,7 +155,7 @@
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
             <div class="icon">
-                <span class="fa fa-dollar"></span>
+                <span class="fa fa-money-bill-wave"></span>
             </div>
             <div class="content">
                 <div class="text"><span data-tkey="networkLastReward">Last Reward</span></div>
@@ -111,7 +168,7 @@
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
             <div class="icon">
-                <span class="fa fa-group"></span>
+                <span class="fa fa-users"></span>
             </div>
             <div class="content">
                 <div class="text"><span data-tkey="poolMiners">Connected Miners</span></div>
@@ -119,12 +176,12 @@
             </div>
         </div>
     </div>
-        
+
     <!-- Pool Fee -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
             <div class="icon">
-                <span class="fa fa-dollar"></span>
+                <span class="fa fa-money-bill-wave"></span>
             </div>
             <div class="content">
                 <div class="text"><span data-tkey="poolFee">Pool Fee</span></div>
@@ -132,25 +189,25 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Minimum Payout -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
             <div class="icon">
-                <span class="fa fa-dollar"></span>
+                <span class="fa fa-money-bill-wave"></span>
             </div>
             <div class="content">
                 <div class="text"><span data-tkey="paymentsMinimum">Minimum Payout</span></div>
-                <div class="value"><span id="paymentsMinimum">N/A</span></div>
+                <div class="value"><span class="paymentsMinimum">N/A</span></div>
             </div>
         </div>
     </div>
-            
+
     <!-- Payment Interval -->
     <div class="col-lg-3 col-sm-4">
         <div class="infoBox hoverExpandEffect">
             <div class="icon">
-                <span class="fa fa-clock-o"></span>
+                <span class="fa fa-clock"></span>
             </div>
             <div class="content">
                 <div class="text"><span data-tkey="paymentsInterval">Payment Interval</span></div>
@@ -161,15 +218,15 @@
 
     <!-- Last Hash -->
     <div class="col-sm-12">
-        <div class="hashInfo hoverExpandEffect">
-            <div class="text"><span data-tkey="lastHash">Last Hash</span></div>
+        <div class="hashInfo hoverExpandEffect card">
+            <div class="text"><span data-tkey="lastHash">Last Network Block</span></div>
             <div class="content clearfix">
-               <div class="value"><a id="lastHash" target="_blank">N/A</a></div>
-               <div class="time">(<span id="networkLastBlockFound">Never</span>)</div>
+                <div class="value"><a id="lastHash" target="_blank">N/A</a></div>
+                <div class="time">(<span id="networkLastBlockFound">Never</span>)</div>
             </div>
         </div>
     </div>
-    
+
 </div>
 
 <!-- Pool Charts -->
@@ -180,8 +237,8 @@
             <div class="chart">
                 <canvas id="chart_hashrate"></canvas>
                 <a class="chart-style"></a>
-            </div> 
-        </div>        
+            </div>
+        </div>
     </div>
     <div class="col-sm-6 poolChart">
         <div class="card">
@@ -189,7 +246,7 @@
             <div class="chart">
                 <canvas id="chart_diff"></canvas>
                 <a class="chart-style"></a>
-            </div> 
+            </div>
         </div>
     </div>
     <div class="col-sm-6 poolChart">
@@ -198,188 +255,260 @@
             <div class="chart">
                 <canvas id="chart_miners"></canvas>
                 <a class="chart-style"></a>
-            </div> 
-        </div> 
-    </div>    
+            </div>
+        </div>
+    </div>
     <div class="col-sm-6 poolChart">
         <div class="card">
             <h4><span data-tkey="workers">Workers</span></h4>
             <div class="chart">
                 <canvas id="chart_workers"></canvas>
                 <a class="chart-style"></a>
-            </div> 
-        </div> 
-    </div>    
+            </div>
+        </div>
+    </div>
 </div>
 
-<!-- Javascript -->
+<!-- Top 10 miners -->
+<h3><span data-tkey="top10miners">Top 10 miners</span></h3>
+<div class="card">
+    <div id="top10miners" class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="col1 sort">#</th>
+                    <th class="col2 sort"><span data-tkey="miner">Miner</span></th>
+                    <th class="col3 sort"><span data-tkey="hashRate">Hash Rate</span></th>
+                    <th class="col4 sort"><span data-tkey="lastShare">Last Share Submitted</span></th>
+                    <th class="col5 sort"><span data-tkey="totalHashes">Total Hashes Submitted</span></th>
+                </tr>
+            </thead>
+            <tbody id="top10miners_rows">
+            </tbody>
+        </table>
+    </div>
+</div>
+
 <script>
-// Charts initialized
-let  chartsInitialized = false;
-let  intervalChartsUpdate;
+ // Charts initialized
+ var chartsInitialized = false;
+ var intervalChartsUpdate;
+ var intervalUpdateTop10;
 
-// Update current page
-currentPage = {
-    destroy: function(){
-        $('#networkLastBlockFound,#poolLastBlockFound').timeago('dispose');
-        if (chartsInitialized) {
-            chartsInitialized = false;
-            clearInterval(intervalChartsUpdate);
-        }
-    },
-    update: function(){
-        $('#networkLastBlockFound').timeago('update', new Date(lastStats.lastblock.timestamp * 1000).toISOString());
-        
-        updateText('networkHashrate', getReadableHashRateString(lastStats.network.difficulty / lastStats.config.coinDifficultyTarget) + '/sec');
-        updateText('networkDifficulty', formatNumber(lastStats.network.difficulty.toString(), ' '));
-        updateText('blockchainHeight', formatNumber(lastStats.network.height.toString(), ' '));
-        updateText('lastHash', lastStats.lastblock.hash).setAttribute('href', getBlockchainUrl(lastStats.lastblock.hash));
+ // Update current page
+ currentPage = {
+     destroy: function(){
+         $('#networkLastBlockFound,#poolLastBlockFound').timeago('dispose');
+         if (chartsInitialized) {
+             chartsInitialized = false;
+             clearInterval(intervalChartsUpdate);
+         }
+     },
+     update: function(){
+         $('#networkLastBlockFound').timeago('update', new Date(lastStats.lastblock.timestamp * 1000).toISOString());
 
-        if (lastStats.config.networkFee) {
-            let  networkFeePercent = lastStats.config.networkFee / 100;
-            updateText('networkLastReward', getReadableCoins(lastStats.lastblock.reward - (lastStats.lastblock.reward * networkFeePercent)));
-        } else {
-            updateText('networkLastReward', getReadableCoins(lastStats.lastblock.reward));
-        }
+         updateText('networkHashrate', getReadableHashRateString(lastStats.network.difficulty / lastStats.config.coinDifficultyTarget) + '/s');
+         updateText('networkDifficulty', formatNumber(lastStats.network.difficulty.toString(), ' '));
+         updateText('blockchainHeight', formatNumber(lastStats.network.height.toString(), ' '));
+         updateText('lastHash', lastStats.lastblock.hash).setAttribute('href', getBlockchainUrl(lastStats.lastblock.hash));
 
-        updateText('poolHashrate', getReadableHashRateString(lastStats.pool.hashrate) + '/sec');
-        updateText('blocksTotal', lastStats.pool.totalBlocks.toString());
-        
-        let  hashPower = lastStats.pool.hashrate / (lastStats.network.difficulty / lastStats.config.coinDifficultyTarget) * 100;
-        updateText('hashPower', hashPower.toFixed(2) + '%');
+         if (lastStats.config.networkFee) {
+             var networkFeePercent = lastStats.config.networkFee / 100;
+             updateText('networkLastReward', getReadableCoins(lastStats.lastblock.reward - (lastStats.lastblock.reward * networkFeePercent)));
+         } else {
+             updateText('networkLastReward', getReadableCoins(lastStats.lastblock.reward));
+         }
 
-        if (lastStats.pool.lastBlockFound) {
-            let  d = new Date(parseInt(lastStats.pool.lastBlockFound)).toISOString();
-            $('#poolLastBlockFound').timeago('update', d);
-        }
-        else {
-            $('#poolLastBlockFound').removeAttr('title').data('ts', '').update('Never');
-        }
+         updateText('poolHashrate', getReadableHashRateString(lastStats.pool.hashrate) + '/sec');
+         updateText('blocksTotal', lastStats.pool.totalBlocks.toString());
 
-        updateText('poolMiners', lastStats.pool.miners.toString());
-        updateText('poolWorkers', lastStats.pool.workers.toString());
+         var hashPower = lastStats.pool.hashrate / (lastStats.network.difficulty / lastStats.config.coinDifficultyTarget) * 100;
+         updateText('hashPower', hashPower.toFixed(2) + '%');
 
-        let  totalFee = lastStats.config.fee;
+         if (lastStats.pool.lastBlockFound) {
+             var d = new Date(parseInt(lastStats.pool.lastBlockFound)).toISOString();
+             $('#poolLastBlockFound').timeago('update', d);
+         }
+         else {
+             $('#poolLastBlockFound').removeAttr('title').data('ts', '').update('Never');
+         }
 
-        updateText('poolFee', (totalFee > 0 && totalFee != 100 ? floatToString(totalFee) : (totalFee == 100 ? '100' : '0')) + '%');
+         updateText('poolMiners', lastStats.pool.miners.toString());
+         updateText('poolWorkers', lastStats.pool.workers.toString());
 
-        updateText('paymentsInterval', getReadableTime(lastStats.config.paymentsInterval));
-        updateText('paymentsMinimum', getReadableCoins(lastStats.config.minPaymentThreshold));
+         var totalFee = lastStats.config.fee;
 
-        updateText('blockSolvedTime', getReadableTime(lastStats.network.difficulty / lastStats.pool.hashrate));
-        updateText('currentEffort', (lastStats.pool.roundHashes / lastStats.network.difficulty * 100).toFixed(1) + '%');
+         updateText('poolFee', (totalFee > 0 && totalFee != 100 ? floatToString(totalFee) : (totalFee == 100 ? '100' : '0')) + '%');
 
-        if (lastStats.charts && !chartsInitialized) {
-            intervalChartsUpdate = setInterval(createCharts, 60*1000);
-            createCharts();
-            chartsInitialized = true;
-        }
-    }
-};
+         updateText('paymentsInterval', getReadableTime(lastStats.config.paymentsInterval));
+         updateTextClasses('paymentsMinimum', getReadableCoins(lastStats.config.minPaymentThreshold));
+         updateTextClasses('paymentsDenomination', getReadableCoins(lastStats.config.denominationUnit, 3));
 
-// Enable timeago on last block found
-$('#networkLastBlockFound,#poolLastBlockFound').timeago();
+         updateText('blockSolvedTime', getReadableTime(lastStats.network.difficulty / lastStats.pool.hashrate));
+         updateText('currentEffort', (lastStats.pool.roundHashes / lastStats.network.difficulty * 100).toFixed(1) + '%');
 
-/**
- * Charts
- **/
+         if (lastStats.charts && !chartsInitialized) {
+             if(typeof intervalChartsUpdate !== 'undefined') clearInterval(intervalChartsUpdate)
+             intervalChartsUpdate = setInterval(createCharts, 60*1000);
+             createCharts();
+             chartsInitialized = true;
+         }
 
-// Create charts
-function createCharts() {
-    if (!lastStats || !lastStats.charts) return ;
-    let  data = lastStats.charts;
+         // Load initial data
+         updateTop10();
 
-    let  graphData = {
-        hashrate: getGraphData(data.hashrate),
-        diff: getGraphData(data.difficulty),
-        miners: getGraphData(data.miners),
-        workers: getGraphData(data.workers)
-    };
+         // Start updates once per minute
+         intervalUpdateTop10 = setInterval(updateTop10, (60*1000));
 
-    for (let  graphType in graphData) {
-        if (graphData[graphType].values.length > 1) {
-            let  $chart = $('#chart_'+graphType);
-            let  bgcolor = null, bordercolor = null, borderwidth = null;
-            let  colorelem = $chart.siblings('a.chart-style');
-            if (colorelem.length == 1) {
-                bgcolor = colorelem.css('background-color');
-                bordercolor = colorelem.css('border-left-color');
-                borderwidth = parseFloat(colorelem.css('width'));
-            }
-            if (bgcolor === null) bgcolor = 'rgba(3, 169, 244, .4)';
-            if (bordercolor === null) bordercolor = '#03a9f4';
-            if (borderwidth === null || isNaN(borderwidth)) borderwidth = 1;
+     }
+ };
 
-            let  chartObj = new Chart(document.getElementById('chart_'+graphType), {
-                type: 'line',
-                data: {
-                    labels: graphData[graphType].names,
-                    datasets: [{
-                        data: graphData[graphType].values,
-                        dataType: graphType,
-                        fill: true,
-                        backgroundColor: bgcolor,
-                        borderColor: bordercolor,
-                        borderWidth: borderwidth
-                    }]
-                },
-                options: {
-                    animation: false,
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    legend: { display: false },
-                    elements: { point: { radius: 0, hitRadius: 10, hoverRadius: 5 } },
-                    scales: {
-                        xAxes: [{
-                            display: false,
-                            ticks: { display: false },
-                            gridLines: { display: false }
-                        }],
-                        yAxes: [{
-                            display: false,
-                            ticks: {
-                                display: false,
-                                beginAtZero: true,
-                                userCallback: function(label, index, labels) {
-                                    if (Math.floor(label) === label) return label;
-                                }
-                            },
-                            gridLines: { display: false }
-                        }]
-                    },
-                    layout: {
-                        padding: { top: 5, left: 10, right: 10, bottom: 10 }
-                    },
-                    tooltips: {
-                        callbacks: {
-                            label: function(tooltipItem, data) {
-                                let  dataType = data.datasets[tooltipItem.datasetIndex].dataType || '';
-                                let  label = tooltipItem.yLabel;
-                                if (dataType == 'hashrate') label = getReadableHashRateString(tooltipItem.yLabel)+'/sec';
-                                else label = formatNumber(tooltipItem.yLabel.toString(), ' ');
-                                return ' ' + label;
-                            }
-                        }
-                    }
-                }
-            });
-            $chart.closest('.poolChart').show();
-        }
-    }
-}
+ // Enable timeago on last block found
+ $('#networkLastBlockFound,#poolLastBlockFound').timeago();
 
-// Get chart data
-function getGraphData(rawData) {
-    let  graphData = {
-        names: [],
-        values: []
-    };
-    if(rawData) {
-        for (let  i = 0, xy; xy = rawData[i]; i++) {
-            graphData.names.push(new Date(xy[0]*1000).toLocaleString());
-            graphData.values.push(xy[1]);
-        }
-    }        
-    return graphData;
-}
+ /**
+  * Charts
+  **/
+
+ // Create charts
+ function createCharts() {
+     if (!lastStats || !lastStats.charts) return ;
+     var data = lastStats.charts;
+
+     var graphData = {
+         hashrate: getGraphData(data.hashrate),
+         diff: getGraphData(data.difficulty),
+         miners: getGraphData(data.miners),
+         workers: getGraphData(data.workers)
+     };
+
+     for (var graphType in graphData) {
+         if (graphData[graphType].values.length > 1) {
+             var $chart = $('#chart_'+graphType);
+             var bgcolor = null, bordercolor = null, borderwidth = null;
+             var colorelem = $chart.siblings('a.chart-style');
+             if (colorelem.length == 1) {
+                 bgcolor = colorelem.css('background-color');
+                 bordercolor = colorelem.css('border-left-color');
+                 borderwidth = parseFloat(colorelem.css('width'));
+             }
+             if (bgcolor === null) bgcolor = 'rgba(50, 153, 211, .8)';
+             if (bordercolor === null) bordercolor = '#03a9f4';
+             if (borderwidth === null || isNaN(borderwidth)) borderwidth = 1;
+
+             var chartConfig = {
+                 type: 'line',
+                 data: {
+                     labels: graphData[graphType].names,
+                     datasets: [{
+                         data: graphData[graphType].values,
+                         dataType: graphType,
+                         fill: true,
+                         backgroundColor: bgcolor,
+                         borderColor: bordercolor,
+                         borderWidth: borderwidth
+                     }]
+                 },
+                 options: {
+                     animation: false,
+                     responsive: true,
+                     maintainAspectRatio: false,
+                     legend: { display: false },
+                     elements: { point: { radius: 0, hitRadius: 10, hoverRadius: 5 } },
+                     scales: {
+                         xAxes: [{
+                             display: false,
+                             ticks: { display: false },
+                             gridLines: { display: false }
+                         }],
+                         yAxes: [{
+                             display: false,
+                             ticks: {
+                                 display: false,
+                                 beginAtZero: true,
+                                 userCallback: function(label, index, labels) {
+                                     if (Math.floor(label) === label) return label;
+                                 }
+                             },
+                             gridLines: { display: false }
+                         }]
+                     },
+                     layout: {
+                         padding: { top: 5, left: 10, right: 10, bottom: 10 }
+                     },
+                     tooltips: {
+                         callbacks: {
+                             label: function(tooltipItem, data) {
+                                 var dataType = data.datasets[tooltipItem.datasetIndex].dataType || '';
+                                 var label = tooltipItem.yLabel;
+                                 if (dataType == 'hashrate') label = getReadableHashRateString(tooltipItem.yLabel)+'/sec';
+                                 else label = formatNumber(tooltipItem.yLabel.toString(), ' ');
+                                 return ' ' + label;
+                             }
+                         }
+                     }
+                 }
+             };
+
+             if(graphType == 'workers' || graphType == 'miners')
+                 chartConfig.data.datasets[0].steppedLine = true
+             var chartObj = new Chart(document.getElementById('chart_'+graphType), chartConfig);
+             $chart.closest('.poolChart').show();
+         }
+     }
+ }
+
+ // Get chart data
+ function getGraphData(rawData) {
+     var graphData = {
+         names: [],
+         values: []
+     };
+     if(rawData) {
+         for (var i = 0, xy; xy = rawData[i]; i++) {
+             graphData.names.push(new Date(xy[0]*1000).toLocaleString());
+             graphData.values.push(xy[1]);
+         }
+     }
+     return graphData;
+ }
+
+
+ // Top 10 miners
+
+ // Get miner cells
+ function getMinerCells(position, data){
+     var miner = data.miner;
+     var hashrate = data.hashrate ? data.hashrate : 0;
+     var lastShare = data.lastShare ? data.lastShare : 0;
+     var hashes = (data.hashes || 0).toString();
+
+     return '<td class="col1" data-sort="' + position + '">' + position + '</td>' +
+            '<td class="col2" data-sort="' + miner + '">' + miner + '</td>' +
+            '<td class="col3" data-sort="' + hashrate + '">' + getReadableHashRateString(hashrate) + '/sec</td>' +
+            '<td class="col4" data-sort="' + lastShare + '">' + (lastShare ? $.timeago(new Date(parseInt(lastShare) * 1000).toISOString()) : 'Never') + '</td>' +
+            '<td class="col5" data-sort="' + hashes + '">' + hashes + '</td>';
+ }
+
+
+ // Update top10 miners report
+ function updateTop10() {
+
+     var xhrGetTOP = $.ajax({
+         url: api + '/get_top10miners',
+         data: {
+             time: $('#top10_rows').children().last().data('time')
+         },
+         dataType: 'json',
+         cache: 'false',
+         success: function(data){
+             if (!data) return;
+             var html = '';
+             for (var i=0; i<data.length; ++i) {
+                 html += '<tr>' + getMinerCells(i+1, data[i]) + '</tr>';
+             }
+             $( "#top10miners_rows" ).html(html);
+         }
+     });
+ }
 </script>

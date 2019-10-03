@@ -9,12 +9,24 @@
     "telegram": "Группа Telegram",
     "discord": "Discord",
     "contactUs": "Почта",
-    
+
+    "welcomeHeader": "Добро пожаловать на официальный майнинг пул Ryo",
+    "welcomeText1": "Уважайте идеи децентрализации - поддерживайте разные пулы хешрейтом!",
+    "serverLocation": "Адрес сервера",
+    "poolFeatures": "Функции пула",
+    "poolFeature1": "Поддержка интегрированных адресов и payment ID",
+    "poolFeature2": "Настраиваемый порог выплат",
+    "propPayment": "Пропорциональная система начислений",
+    "logout": "Выход",
+    "links": "Ссылки",
+    "officialWebsite": "Официальный сайт",
+    "lastHash": "Предыдущий найденный блок в сети",
+
     "network": "Сеть",
     "pool": "Пул",
     "you": "Вы",
     "statsUpdated": "Статистика обновлена",
-    
+
     "poolHashrate": "Скорость пула",
     "currentEffort": "Сложность раунда",
     "networkHashrate": "Скорость сети",
@@ -23,7 +35,7 @@
     "networkLastReward": "Последнее вознаграждение",
     "poolMiners": "Пользователи пула",
     "poolFee": "Комиссия пула",
-    
+
     "minerStats": "Ваша статистика и история платежей",
     "workerStats": "Статистика ферм",
     "miner": "Miner",
@@ -32,7 +44,6 @@
     "workers": "Фермы",
     "workersCount": "фермы",
     "workerName": "Имя фермы",
-    "lastHash": "Последний хеш",
     "hashRate": "Скорость",
     "currentHashRate": "Текущая скорость",
     "lastShare": "Последняя шара принята",
@@ -48,7 +59,7 @@
     "height": "№ блока",
     "difficulty": "Сложность",
     "blockHash": "Хеш блока",
-    "effort": "Усилие",    
+    "effort": "Усилие",
     "blocksFoundLast24": "Blocks found in the last 24 hours",
     "blocksFoundLastDays": "Blocks found in the last {DAYS} days",
 
@@ -136,7 +147,7 @@
     "set": "Установить",
     "enable": "Включить",
     "disable": "Выключить",
-    
+
     "status": "Статус",
     "updated": "Обновлено:",
     "source": "Source:",
@@ -175,7 +186,7 @@
     "timeagoMonths": "%d месяцев",
     "timeagoYear": "about год",
     "timeagoYears": "%d лет",
-    
+
     "poweredBy": "Powered by",
     "openSource": "open sourced under the"
 }

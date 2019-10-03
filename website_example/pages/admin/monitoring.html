@@ -84,25 +84,25 @@ function getCheckTime(timestamp) {
 }
 
 function monitoringInfoParse(data) {
-    let  monitoringDaemon = {
+    var monitoringDaemon = {
         lastCheck: getCheckTime(data['monitoring'].daemon.lastCheck) || 'never',
         lastStatus: data['monitoring'].daemon.lastStatus || '',
         lastFail: getCheckTime(data['monitoring'].daemon.lastFail) || 'never',
         lastFailResponse: data['monitoring'].daemon.lastFailResponse || ' ',
         lastResponse: data['monitoring'].daemon.lastResponse || ' '
     };
-    let  monitoringWallet = {
+    var monitoringWallet = {
         lastCheck: getCheckTime(data['monitoring'].wallet.lastCheck) || 'never',
         lastStatus: data['monitoring'].wallet.lastStatus || '',
         lastFail: getCheckTime(data['monitoring'].wallet.lastFail) || 'never',
         lastFailResponse: data['monitoring'].wallet.lastFailResponse || ' ',
         lastResponse: data['monitoring'].wallet.lastResponse || ' '
     };
-    
-    let  properData = {};
+
+    var properData = {};
     if(data.hasOwnProperty('logs')) {
         properData['logs'] = data['logs'];
-        for(let  log in data['logs']) {
+        for(var log in data['logs']) {
             data['logs'][log].changed = formatDate(data['logs'][log].changed);
             data['logs'][log].link = api + '/admin_log?file=' + log + '&password=' + docCookies.getItem('password');
         }
@@ -114,12 +114,12 @@ function monitoringInfoParse(data) {
 }
 
 function renderLogInfo(promptPassword) {
-    let  password = docCookies.getItem('password');
+    var password = docCookies.getItem('password');
 
     if(!password || promptPassword) {
         password = prompt('Enter admin password');
     }
-    
+
     $.ajax({
         url: api + '/admin_monitoring',
         data: {password: password},
@@ -128,7 +128,7 @@ function renderLogInfo(promptPassword) {
         success: function(data) {
             docCookies.setItem('password', password, Infinity);
             renderTemplate(monitoringInfoParse(data), '#monitoringInfo', '#monitoringInfoView');
-	    
+
             $('#daemonStatus').addClass(data['monitoring'].daemon.lastStatus == 'ok' ? 'text-success' : 'text-danger');
             $('#walletStatus').addClass(data['monitoring'].wallet.lastStatus == 'ok' ? 'text-success' : 'text-danger');
 
