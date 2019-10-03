@@ -1,5 +1,5 @@
 config.json
-config.json~
+website_example/config.js
 package-lock.json
 node_modules/
 build/
